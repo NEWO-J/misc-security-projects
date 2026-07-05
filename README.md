@@ -1,5 +1,6 @@
 # misc-security-projects
-Everything in this repository was coded by a human, for educational purposes, and is not intended for production use.
+Everything in this repository was coded by a human (Me), AI was excluded in the coding process for full educational value to myself, 
+and thus these tools are not intended for production use.
 
 A grab-bag of small security engineering experiments. cryptography, secure
 file handling, and low-level/systems code.
