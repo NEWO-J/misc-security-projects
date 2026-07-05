@@ -1,7 +1,7 @@
 # misc-security-projects
 Everything in this repository was coded by a human, for educational purposes, and is not intended for production use.
 
-A grab-bag of small security engineering experiments — cryptography, secure
+A grab-bag of small security engineering experiments. cryptography, secure
 file handling, and low-level/systems code.
 
 ## Directory structure
