@@ -19,10 +19,7 @@ misc-security-projects/
 │
 ├── low-level/
 │   └── auth-with-timing-side-channel-prevention/               # Rust: constant-time auth (timing-attack safe)
-│       ├── Cargo.toml
-│       ├── Cargo.lock
-│       └── src/
-│           └── main.rs
+│      
 │
 └── ring_buffer_overrun_detector.py                             # Detects overruns in a ring buffer
 ```
