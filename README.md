@@ -14,7 +14,8 @@ misc-security-projects/
 │   ├── ssh_key_auditor.py                                       # Audits SSH keys for weak/insecure configurations
 │   ├── zero-copy-boundary-parser.py                             # Zero-copy streaming boundary parser
 │   ├── zero-copy-boundary-parser-with-desynchronization-prevention.py  # + desync-resistant framing
-│   └── zc-boundary-parser-w-desync-prot-and-hmac.py             # + HMAC integrity on top of desync protection
+│   ├── zc-boundary-parser-w-desync-prot-and-hmac.py          # + HMAC integrity on top of desync protection
+|   └── merkle_tree_builder/                                  # Rust: SHA256 merkle tree constructor
 │
 ├── fileuploads/
 │   └── secure-file-upload.py                                    # Hardened file-upload handling
