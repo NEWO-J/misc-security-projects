@@ -10,7 +10,7 @@ file handling, and low-level/systems code.
 ```
 misc-security-projects/
 ├── cryptography/
-│   ├── chacha20-poly1305-engine.py                              # ChaCha20-Poly1305 AEAD encryption engine
+│   ├── chacha20-poly1305-engine.py  [WIP]                       # ChaCha20-Poly1305 AEAD encryption engine
 │   ├── ssh_key_auditor.py                                       # Audits SSH keys for weak/insecure configurations
 │   ├── zero-copy-boundary-parser.py                             # Zero-copy streaming boundary parser
 │   ├── zero-copy-boundary-parser-with-desynchronization-prevention.py  # + desync-resistant framing
@@ -20,7 +20,7 @@ misc-security-projects/
 ├── fileuploads/
 │   ├── secure-file-upload-ext-whitelist.py                   # Hardened file upload with extension whitelist
 |   ├── secure-file-upload-ext-whitelist+MIME-check.py        # File upload + extension whitelist + MIME check
-|   ├── secure-svg-upload-anti-xxe-detect.py                  # .SVG file upload with XXE detection
+|   ├── secure-svg-upload-anti-xxe-detect.py   [WIP]          # .SVG file upload with XXE detection
 |   └── upload-ext-whitelist+MIME-check+filename-sanitization # extension whitelist + MIME check + filename sanitization
 │
 ├── low-level/
