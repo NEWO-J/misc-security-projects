@@ -15,10 +15,13 @@ misc-security-projects/
 │   ├── zero-copy-boundary-parser.py                             # Zero-copy streaming boundary parser
 │   ├── zero-copy-boundary-parser-with-desynchronization-prevention.py  # + desync-resistant framing
 │   ├── zc-boundary-parser-w-desync-prot-and-hmac.py          # + HMAC integrity on top of desync protection
-|   └── merkle_tree_builder/                                  # Rust: SHA256 merkle tree constructor
+|   └── merkle_builder/                                       # Rust: SHA256 merkle tree constructor
 │
 ├── fileuploads/
-│   └── secure-file-upload.py                                    # Hardened file-upload handling
+│   ├── secure-file-upload-ext-whitelist.py                   # Hardened file upload with extension whitelist
+|   ├── secure-file-upload-ext-whitelist+MIME-check.py        # File upload + extension whitelist + MIME check
+|   ├── secure-svg-upload-anti-xxe-detect.py                  # .SVG file upload with XXE detection
+|   └── upload-ext-whitelist+MIME-check+filename-sanitization # extension whitelist + MIME check + filename sanitization
 │
 ├── low-level/
 │   └── auth-with-timing-side-channel-prevention/               # Rust: constant-time auth (timing-attack safe)
