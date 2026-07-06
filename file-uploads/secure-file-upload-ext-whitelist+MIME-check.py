@@ -2,7 +2,7 @@ import shutil
 from pathlib import Path
 
 allowed_ext = set([".png",".jpg",".jpeg",".gif"])
-allowed_magicb = set([b'\x89PNG\r\n\x1a\n', b'\xff\xd8'])
+allowed_magicb = set([b'\x89PNG\r\n\x1a\n', b'\xff\xd8',b'GIF8'])
 dst_path = "./auxiliary/file-uploads/"
 
 def upload_check(filename):
