@@ -21,10 +21,10 @@ misc-security-projects/
 │   ├── secure-file-upload-ext-whitelist.py                      # Hardened file upload with extension whitelist
 │   ├── secure-file-upload-ext-whitelist+MIME-check.py           # File upload + extension whitelist + MIME check
 │   ├── secure-svg-upload-anti-xxe-detect.py   [WIP]             # .SVG file upload with XXE detection
-│   └── upload-ext-whitelist+MIME-check+filename-sanitization.py # extension whitelist + MIME check + filename sanitization
+│   └── upload-ext-whitelist+MIME-check+filename-sanitization.py    # extension whitelist + MIME check + filename sanitization
 │
 ├── log-parsing/
-│   └── binary_search_log_parsing.py                             # Binary search over timestamp-sorted logs by byte-seeking
+│   └── binary_search_log_parsing.py                             # O(logn) Binary search over timestamp-sorted logs by byte-seeking
 │
 ├── low-level/
 │   └── auth-with-timing-side-channel-prevention/               # Rust: constant-time auth (timing-attack safe)
