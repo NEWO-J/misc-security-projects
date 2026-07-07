@@ -30,7 +30,7 @@ misc-security-projects/
 │   └── auth-with-timing-side-channel-prevention/               # Rust: constant-time auth (timing-attack safe)
 │
 ├── serialization/
-│   └── secure-serialization-enforcer.py                        # Strips private (__) attributes before pickle serialization
+│   └── secure-serialization-enforcer.py                        # Strips private attributes before pickle serialization
 │
 └── ring_buffer_overrun_detector.py                             # Detects overruns in a ring buffer
 ```
