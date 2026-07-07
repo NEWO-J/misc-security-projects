@@ -14,18 +14,23 @@ misc-security-projects/
 │   ├── ssh_key_auditor.py                                       # Audits SSH keys for weak/insecure configurations
 │   ├── zero-copy-boundary-parser.py                             # Zero-copy streaming boundary parser
 │   ├── zero-copy-boundary-parser-with-desynchronization-prevention.py  # + desync-resistant framing
-│   ├── zc-boundary-parser-w-desync-prot-and-hmac.py          # + HMAC integrity on top of desync protection
-|   └── merkle_builder/                                       # Rust: SHA256 merkle tree constructor
+│   ├── zc-boundary-parser-w-desync-prot-and-hmac.py             # + HMAC integrity on top of desync protection
+│   └── merkle_builder/                                          # Rust: SHA256 merkle tree constructor
 │
-├── fileuploads/
-│   ├── secure-file-upload-ext-whitelist.py                   # Hardened file upload with extension whitelist
-|   ├── secure-file-upload-ext-whitelist+MIME-check.py        # File upload + extension whitelist + MIME check
-|   ├── secure-svg-upload-anti-xxe-detect.py   [WIP]          # .SVG file upload with XXE detection
-|   └── upload-ext-whitelist+MIME-check+filename-sanitization # extension whitelist + MIME check + filename sanitization
+├── file-uploads/
+│   ├── secure-file-upload-ext-whitelist.py                      # Hardened file upload with extension whitelist
+│   ├── secure-file-upload-ext-whitelist+MIME-check.py           # File upload + extension whitelist + MIME check
+│   ├── secure-svg-upload-anti-xxe-detect.py   [WIP]             # .SVG file upload with XXE detection
+│   └── upload-ext-whitelist+MIME-check+filename-sanitization.py # extension whitelist + MIME check + filename sanitization
+│
+├── log-parsing/
+│   └── binary_search_log_parsing.py                             # Binary search over timestamp-sorted logs by byte-seeking
 │
 ├── low-level/
 │   └── auth-with-timing-side-channel-prevention/               # Rust: constant-time auth (timing-attack safe)
-│      
+│
+├── serialization/
+│   └── secure-serialization-enforcer.py                        # Strips private (__) attributes before pickle serialization
 │
 └── ring_buffer_overrun_detector.py                             # Detects overruns in a ring buffer
 ```
