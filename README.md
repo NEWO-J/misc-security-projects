@@ -28,7 +28,7 @@ misc-security-projects/
 │
 ├── low-level/
 │   └── auth-with-timing-side-channel-prevention/               # Rust: constant-time auth (timing-attack safe)
-│
+│   └── integer_overflow_detection.c                            # Simple integer overflow detection by comparing sum with addends
 ├── serialization/
 │   └── secure-serialization-enforcer.py                        # Strips private attributes before pickle serialization
 │
