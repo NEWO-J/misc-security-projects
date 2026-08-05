@@ -1,0 +1,15 @@
+name: Container Build Attestion
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-attest:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+      
