@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
             context: ./identity/secure_containerized_microservices/frontend/
-            file: ./Dockerfile
+            file: ./identity/secure_containerized_microservices/frontend/Dockerfile
             tags: ghcr.io/newo-j/misc-security-projects/my-app:latest
       
       - name: Generate Attestation
