@@ -25,6 +25,9 @@ services:
      dockerfile: Dockerfile
     ports:
      - "8082:443"
+    volumes:
+      - ./nginx-selfsingned.key:/etc/ssl/private/nginx-selfsigned.key:ro
+      - ./nginx-selfsigned.pem:/etc/ssl/certs/nginx-selfsigned.pem:ro
 
   cache:
     image: redis:latest
