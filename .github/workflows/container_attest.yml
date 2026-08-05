@@ -1,0 +1,47 @@
+name: Container Build Attestion
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-attest:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      attestations: write
+      contents: read
+      packages: write
+  
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+  
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to container registry 
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build docker container
+        id: push-step
+        uses: docker/build-push-action@v7
+        with:
+            context: . 
+            file: ./identity/secure_containerized_microservices/frontend/Dockerfile
+            tags: ghcr.io/newo-j/misc-security-projects/my-app:latest
+      
+      - name: Generate Attestation
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: ghcr.io/newo-j/misc-security-projects/my-app
+          subject-digest: ${{ steps.push-step.outputs.digest }}
+          push-to-registry: true
+
+        
+      
