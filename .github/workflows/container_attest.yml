@@ -34,12 +34,12 @@ jobs:
         with:
             context: . 
             file: ./identity/secure_containerized_microservices/frontend/Dockerfile
-            tags: ghcr.io/${{ github.repository }}/my-app:latest
+            tags: ghcr.io/newo-j/misc-security-projects/my-app:latest
       
       - name: Generate Attestation
         uses: actions/attest-build-provenance@v2
         with:
-          subject-name: ghcr.io/${{ github.repository }}/my-app
+          subject-name: ghcr.io/newo-j/misc-security-projects/my-app
           subject-digest: ${{ steps.push-step.outputs.digest }}
           push-to-registry: true
 
