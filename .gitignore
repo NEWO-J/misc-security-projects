@@ -1,7 +1,19 @@
 myvenv/
 ignored_data
 .env
+.env.*
+!.env.example
 myenv/
 env/
 myvenv/
 *.pyc
+
+# keys, certs, and other credential material
+*.key
+*.crt
+*.pem
+*.p12
+*.pfx
+*.jks
+id_rsa
+id_ed25519
