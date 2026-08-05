@@ -34,6 +34,7 @@ jobs:
         with:
             context: ./identity/secure_containerized_microservices/frontend/
             file: ./identity/secure_containerized_microservices/frontend/Dockerfile
+            push: true
             tags: ghcr.io/newo-j/misc-security-projects/my-app:latest
       
       - name: Generate Attestation
