@@ -1,0 +1,33 @@
+version: "1.0"
+
+
+services:
+  auth:
+    build:
+      context: .
+      dockerfile: auth/Dockerfile
+    env_file:
+      - .env
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: auth
+    volumes:
+      - ./psql_seedfile.txt:/docker-entrypoint-initdb.d/seed.sql
+    ports:
+      - "8081:5432"
+
+  frontend:
+    build:
+     context: frontend/.
+     dockerfile: Dockerfile
+    ports:
+     - "8082:443"
+
+  cache:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    

@@ -1,0 +1,7 @@
+fastapi
+psycopg
+python-multipart
+fastapi[standard]
+argon2-cffi
+pyjwt
+redis

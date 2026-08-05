@@ -1,0 +1,23 @@
+.auth input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.register input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.error {
+    color: red;
+}

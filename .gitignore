@@ -1,2 +1,7 @@
 myvenv/
 ignored_data
+.env
+myenv/
+env/
+myvenv/
+*.pyc
