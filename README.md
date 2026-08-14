@@ -34,7 +34,8 @@ misc-security-projects/
 │
 ├── identity/
 │   ├── authenticated_socket/                                    # TCP socket authentication with TOTP-based MFA
-│   └── secure_containerized_microservices/                      # Containerized auth: FastAPI + nginx + Postgres + Redis
+│   ├── secure_containerized_microservices/                      # Containerized auth: FastAPI + nginx + Postgres + Redis
+|   └── contextual_IAM_alerts_with_kafka_and_graphDB             # "Attack story" graphing engine for common auth attacks data viz - Neo4j + Kafka + JS + Python
 │
 ├── log-parsing/
 │   ├── binary_search_log_parsing.py                             # O(log n) search over timestamp-sorted logs by byte-seeking
