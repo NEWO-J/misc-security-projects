@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <title>Incident graph &middot; Macrohard Defender XDR</title>
+        <script src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+        <script src="dashboard.js" defer></script>
+    </head>
+    <body>
+        <header class="topbar">
+            <div class="brand">
+                <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2.5 20 5.4v6.2c0 5-3.3 8.8-8 10.4-4.7-1.6-8-5.4-8-10.4V5.4Z"/>
+                </svg>
+                <span class="brand-name">Macrohard Defender XDR</span>
+                <span class="brand-divider"></span>
+                <span class="brand-sub">Incident graph</span>
+            </div>
+
+            <div class="topbar-actions">
+                <div class="searchbox">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 4.3 4.3"/></svg>
+                    <input type="text" id="incident-input" placeholder="Incident ID" value="1010" autocomplete="off" spellcheck="false">
+                </div>
+                <button id="load-btn" class="btn btn-primary">Investigate</button>
+                <button id="theme-toggle" class="btn btn-icon" title="Switch theme" aria-label="Switch theme">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4 8.5 8.5 0 1 0 20 14.2Z"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="shell">
+            <aside class="queue" aria-label="Incident queue">
+                <div class="panel-head">
+                    <h2>Incidents</h2>
+                    <span class="pill pill-count" id="queue-count">0</span>
+                </div>
+                <div class="queue-list" id="queue-list"></div>
+            </aside>
+
+            <section class="content">
+                <div class="incident-head">
+                    <div class="incident-title-row">
+                        <span class="sev-bar" id="incident-sev-bar"></span>
+                        <div>
+                            <h1 id="incident-title">No incident selected</h1>
+                            <div class="incident-meta" id="incident-meta">
+                                Pick an incident from the queue, or search by ID.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="incident-badges" id="incident-badges"></div>
+                </div>
+
+                <div class="tiles" id="tiles"></div>
+
+                <div class="tabs" role="tablist">
+                    <button class="tab is-active" data-view="graph" role="tab">Attack story</button>
+                    <button class="tab" data-view="assets" role="tab">Assets</button>
+                </div>
+
+                <div class="stage" id="stage">
+                    <div id="graph-container"></div>
+
+                    <div class="graph-toolbar">
+                        <button class="btn btn-icon" data-action="zoom-in" title="Zoom in" aria-label="Zoom in">
+                            <svg viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/></svg>
+                        </button>
+                        <button class="btn btn-icon" data-action="zoom-out" title="Zoom out" aria-label="Zoom out">
+                            <svg viewBox="0 0 24 24"><path d="M6 12h12"/></svg>
+                        </button>
+                        <button class="btn btn-icon" data-action="fit" title="Fit to view" aria-label="Fit to view">
+                            <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+                        </button>
+                        <button class="btn btn-icon" data-action="relayout" title="Re-run layout" aria-label="Re-run layout">
+                            <svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.6-5.9M20 4v4h-4"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="stage-overlay" id="stage-overlay" hidden></div>
+                </div>
+
+                <div class="assets-view" id="assets-view" hidden></div>
+            </section>
+
+            <aside class="details" id="details-panel" aria-label="Entity details"></aside>
+        </main>
+    </body>
+</html>

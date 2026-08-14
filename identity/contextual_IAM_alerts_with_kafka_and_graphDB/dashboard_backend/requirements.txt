@@ -1,0 +1,2 @@
+fastapi[standard]
+neo4j

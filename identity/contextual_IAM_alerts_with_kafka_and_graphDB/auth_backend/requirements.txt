@@ -1,0 +1,5 @@
+fastapi[standard]
+psycopg
+kafka-python
+argon2-cffi
+pyjwt

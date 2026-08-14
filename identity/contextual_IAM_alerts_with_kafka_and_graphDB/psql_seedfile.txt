@@ -1,0 +1,23 @@
+\c auth;
+
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	name TEXT NOT NULL UNIQUE,
+	"group" TEXT NOT NULL,
+	password TEXT NOT NULL
+);
+
+CREATE TABLE groups (
+	"group" TEXT NOT NULL UNIQUE,
+	perms JSONB
+);
+
+INSERT INTO users (name, "group", password) VALUES ('bob101', 'admin', '$argon2id$v=19$m=65536,t=3,p=4$YC9GAacfLwRzfpCeHx0XLA$TwzQ1FALMpQlFD4lOkveEOtl0mSRMs9J2RtF5Mect0Y');
+
+INSERT INTO users (name, "group", password) VALUES ('jeff202', 'admin', '$argon2id$v=19$m=65536,t=3,p=4$YC9GAacfLwRzfpCeHx0XLA$TwzQ1FALMpQlFD4lOkveEOtl0mSRMs9J2RtF5Mect0Y');
+
+INSERT INTO users (name, "group", password) VALUES ('steve303', 'admin', '$argon2id$v=19$m=65536,t=3,p=4$YC9GAacfLwRzfpCeHx0XLA$TwzQ1FALMpQlFD4lOkveEOtl0mSRMs9J2RtF5Mect0Y');
+
+INSERT INTO groups ("group", perms) VALUES ('admin', '{"mail":["r","w"], "ftp":["r","w"], "db":["r"], "test":[]}') 
+
+\q

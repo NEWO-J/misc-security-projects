@@ -1,0 +1,107 @@
+services:
+
+    auth:
+      build:
+        context: ./auth_backend
+        dockerfile: Dockerfile
+      env_file:
+        - .env
+      depends_on:
+        kafka:
+          condition: service_healthy
+        postgres:
+          condition: service_started
+
+    kafka:
+      image: confluentinc/cp-kafka:latest 
+      ports:
+        - "9092:9092"
+      environment:
+        - KAFKA_NODE_ID=1
+        - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,CONTROLLER:PLAINTEXT
+        - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:9092
+        - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+        - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
+        - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
+        - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
+        - KAFKA_PROCESS_ROLES=broker,controller
+        - KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka:29093
+        - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:29093,PLAINTEXT_HOST://0.0.0.0:29094
+        - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+        - KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER
+        - KAFKA_LOG_DIRS=/tmp/kraft-combined-logs
+        - CLUSTER_ID=Mk3OEYBSD3T24uJkjbXG4Q
+      healthcheck:
+        test: ["CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/9092 || exit 1"]
+        interval: 5s
+        timeout: 5s
+        retries: 10
+        start_period: 60s
+
+    postgres:
+      image: postgres:latest
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: auth
+      volumes:
+        - ./psql_seedfile.txt:/docker-entrypoint-initdb.d/seed.sql
+
+    neo-4j:
+      image: neo4j:latest
+      environment:
+        - NEO4J_AUTH=neo4j/neo4jneo4j
+      ports: 
+        - 7687:7687
+        - 7474:7474
+      
+    web:
+      build:
+        context: auth_frontend/.
+        dockerfile: Dockerfile
+      ports:
+        - 8080:443
+      volumes:
+        - ./nginx-selfsigned.crt:/etc/ssl/certs/selfsigned.crt
+        - ./nginx-selfsigned.key:/etc/ssl/private/selfsigned.key
+      depends_on:
+        - auth
+
+    neo4jconnector:
+      build:
+        context: ./neo4j_connector/
+        dockerfile: Dockerfile
+      depends_on:
+        kafka:
+          condition: service_healthy
+        neo-4j:
+          condition: service_started
+    
+    policy_engine:
+      build:
+        context: ./policy_engine/
+        dockerfile: Dockerfile
+      depends_on:
+        kafka:
+          condition: service_healthy
+
+    dashboard_backend:
+      build:
+        context: ./dashboard_backend/
+        dockerfile: Dockerfile 
+      depends_on:
+        neo-4j:
+          condition: service_started
+
+    dashboard_frontend:
+      build:
+        context: ./dashboard_frontend/
+        dockerfile: Dockerfile
+      volumes:
+        - ./nginx-selfsigned.crt:/etc/ssl/certs/selfsigned.crt
+        - ./nginx-selfsigned.key:/etc/ssl/private/selfsigned.key
+      ports:
+        - 8081:443
+      depends_on:
+        dashboard_backend:
+          condition: service_started
