@@ -13,6 +13,7 @@ misc-security-projects/
 │
 ├── cryptography/
 │   ├── chacha20-poly1305-engine.py  [WIP]                       # ChaCha20-Poly1305 AEAD encryption engine
+|   ├── rsa.py                                                   # RSA encryption with extended euclidian algorithm
 │   ├── ssh_key_auditor.py                                       # Audits SSH keys for weak/insecure configurations
 │   ├── zero-copy-boundary-parser.py                             # Zero-copy streaming boundary parser
 │   ├── zero-copy-boundary-parser-with-desynchronization-prevention.py  # + desync-resistant framing
