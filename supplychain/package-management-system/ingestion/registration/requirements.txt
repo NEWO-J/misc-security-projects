@@ -1,0 +1,4 @@
+fastapi[standard]
+psycopg
+argon2-cffi
+PGPy

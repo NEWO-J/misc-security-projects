@@ -1,0 +1,31 @@
+services:
+    publisher:
+      build:
+        context: ./package_submit_api/
+        dockerfile: Dockerfile
+      ports:
+        - "8001:8000"
+      volumes:
+        - ./package_submit_api/app:/code/app
+    auth:
+      build: 
+        context: ./auth/
+        dockerfile: Dockerfile
+      volumes:
+       - ./auth/app:/code/app
+
+    authdb:
+      image: postgres:latest
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: auth
+      volumes:
+        - ./auth/psqlseed.txt:/docker-entrypoint-initdb.d/seed.sql
+
+    registration:
+      build:
+        context: ./registration/
+        dockerfile: Dockerfile
+      volumes:
+       - "./registration/app:/code/app"

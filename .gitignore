@@ -8,6 +8,15 @@ env/
 myvenv/
 *.pyc
 
+# terraform: provider binaries, state (may contain secrets), var files
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
+
 # keys, certs, and other credential material
 *.key
 *.crt

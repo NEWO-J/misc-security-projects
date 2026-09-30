@@ -35,3 +35,4 @@ def auth_form(
         content={"redirect_url": "https://frontend/authenticated"},
         status_code=200
     )
+

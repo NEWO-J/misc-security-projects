@@ -10,7 +10,7 @@ kek = os.environ.get("SECRET_KEK").encode('utf-8')
 def get_secret(name):
     with psycopg.connect("dbname=secrets_db user=postgres password=postgres host=localhost") as conn:
         with conn.cursor() as cur:
-            cur.execute("SELECT * FROM secrets WHERE secretname = %s", (name,))
+            cur.execute("SELECT * FROM secrets WHERE secretname = %s AND tenant_id = %s", (name, tenant_id))
 
             tenant_id, secretname, ciphertext, nonce, wrapped_key = cur.fetchone()
 
