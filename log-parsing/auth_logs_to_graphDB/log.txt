@@ -1,0 +1,12 @@
+2026-09-29T14:23:01.102Z [INFO] service=auth-service ip=192.168.1.105 user_id=usr_9982 method=POST path=/api/v1/login status=200 latency_ms=45 trace_id=c82f-91a0
+2026-09-29T14:23:01.105Z [WARN] service=payment-service ip=10.0.4.12 user_id=usr_3311 method=POST path=/api/v1/checkout status=429 latency_ms=1200 trace_id=e11a-442b
+2026-09-29T14:23:02.001Z [ERROR] service=auth-service ip=192.168.1.105 user_id=usr_9982 method=POST path=/api/v1/login status=500 latency_ms=350 trace_id=c82f-91a1 error="DB connection timeout"
+2026-09-29T14:23:02.110Z [INFO] service=order-service ip=10.0.4.15 user_id=usr_1020 method=GET path=/api/v1/orders status=200 latency_ms=18 trace_id=f99b-11c2
+2026-09-29T14:23:03.450Z [ERROR] service=payment-service ip=10.0.4.12 user_id=usr_3311 method=POST path=/api/v1/checkout status=503 latency_ms=4500 trace_id=e11a-442c error="Gateway timeout"
+2026-09-29T14:23:03.900Z [INFO] service=auth-service ip=192.168.1.105 user_id=usr_9982 method=POST path=/api/v1/login status=200 latency_ms=52 trace_id=c82f-91a2
+2026-09-29T14:23:04.012Z [INFO] service=cart-service ip=192.168.1.108 user_id=usr_4401 method=PUT path=/api/v1/cart status=200 latency_ms=89 trace_id=a001-33d1
+2026-09-29T14:23:04.500Z [ERROR] service=auth-service ip=192.168.1.105 user_id=usr_9982 method=POST path=/api/v1/login status=401 latency_ms=22 trace_id=c82f-91a3 error="Invalid credentials"
+2026-09-29T14:23:05.112Z [ERROR] service=auth-service ip=192.168.1.105 user_id=usr_9982 method=POST path=/api/v1/login status=401 latency_ms=19 trace_id=c82f-91a4 error="Invalid credentials"
+2026-09-29T14:23:05.890Z [WARN] service=payment-service ip=10.0.4.12 user_id=usr_5590 method=POST path=/api/v1/checkout status=504 latency_ms=5001 trace_id=e11a-442d error="Upstream service timeout"
+2026-09-29T14:23:06.001Z [INFO] service=order-service ip=10.0.4.16 user_id=usr_8820 method=GET path=/api/v1/orders status=200 latency_ms=12 trace_id=f99b-11c3
+2026-09-29T14:23:06.410Z [ERROR] service=auth-service ip=192.168.1.105 user_id=usr_9982 method=POST path=/api/v1/login status=401 latency_ms=21 trace_id=c82f-91a5 error="Invalid credentials"

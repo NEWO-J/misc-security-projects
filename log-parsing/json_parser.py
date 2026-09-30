@@ -6,7 +6,7 @@ def main():
         for line in f:
             jsonified = json.loads(line)
             print(jsonified['timestamp'])
-            rx = re.compile(r".+40.18.102$")
+            rx = re.compile(r".+40.18.102Z$")
             if re.search(rx, jsonified['timestamp']):
                 print(jsonified['message'])
 
